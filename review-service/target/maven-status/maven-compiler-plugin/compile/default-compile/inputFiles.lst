@@ -1,0 +1,12 @@
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/dto/ReviewResponseDto.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/repository/ReviewRepository.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/controller/ReviewController.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/ReviewServiceApplication.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/config/SecurityConfig.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/dto/ReviewRequestDto.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/config/AppRunner.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/mapper/ReviewMapper.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/service/imp/ReviewServiceImpl.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/entity/Review.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/exception/ReviewError.java
+/Users/kamal/Desktop/notion/review-service/src/main/java/com/notion/service/review/domain/service/ReviewService.java

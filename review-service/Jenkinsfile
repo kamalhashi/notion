@@ -1,0 +1,130 @@
+pipeline {
+  environment {
+    registry = 'notion/review-service'
+  }
+  options {
+    timeout(time: 10, unit: 'MINUTES')
+    office365ConnectorWebhooks([[
+      startNotification: true,
+      notifySuccess: true,
+      notifyNotBuilt: true,
+      notifyUnstable: true,
+      notifyFailure: true,
+      notifyBackToNormal: true,
+      url: env.TEAMS_WEBHOOK
+    ]])
+  }
+  agent none
+  stages {
+    stage('Prepare') {
+      parallel {
+        stage('Development') {
+          when { branch 'develop' }
+          steps {
+            script {
+              env.DEPLOY = 'dev'
+              env.TAG = 'dev'
+              echo "Environment ${env.DEPLOY}"
+            }
+          }
+        }
+        stage('Staging') {
+          when { tag 'staging-*' }
+          steps {
+            script {
+              env.DEPLOY = 'staging'
+              env.TAG = 'staging'
+              echo "Environment ${env.DEPLOY}"
+            }
+          }
+        }
+        stage('Production') {
+          when { tag 'release-*' }
+          steps {
+            script {
+              env.DEPLOY = 'production'
+              env.TAG = 'release'
+              echo "Environment ${env.DEPLOY}"
+            }
+          }
+        }
+      }
+    }
+    stage('Sonarqube Analysis') {
+      environment {
+        scannerHome = tool 'SonarScanner'
+      }
+      agent {
+        docker {
+          image 'maven:3-alpine'
+          args '-v $HOME/../.m2:/root/.m2'
+        }
+      }
+      steps {
+        withSonarQubeEnv('sonarqube') {
+          sh "mvn --settings settings.xml -Dspring.profiles.active=${env.DEPLOY} clean package sonar:sonar"
+        }
+      }
+      post {
+        always {
+          cleanWs()
+        }
+      }
+    }
+    stage('Quality Gate') {
+      steps {
+        script {
+          def qg = waitForQualityGate()
+          if (qg.status != 'OK') {
+            error "Pipeline aborted due to quality gate failure: ${qg.status}"
+          }
+        }
+      }
+    }
+    stage('Building image') {
+      agent any
+      when {
+        anyOf {
+          tag 'staging-*'; branch 'develop'; tag 'release-*'
+        }
+      }
+      steps {
+        script {
+          sh "docker build -t $registry:${env.TAG} -f Dockerfile.${env.DEPLOY} ."
+        }
+      }
+    }
+    stage('Deploy Image') {
+      agent any
+      when {
+        anyOf {
+          tag 'staging-*'; branch 'develop'; tag 'release-*'
+        }
+      }
+      steps {
+        script {
+          docker.withRegistry('',  env.DOCKER_HUB_CREDENTIALS) {
+            sh "docker push $registry:${env.TAG}"
+          }
+        }
+      }
+    }
+  }
+  post {
+    always {
+      node(null) {
+        cleanWs()
+      }
+    }
+    success {
+      node(null) {
+        script {
+          if (env.TAG != null) {
+            echo "Deleting docker image $registry:${env.TAG}"
+            sh "docker image rmi $registry:${env.TAG}"
+          }
+        }
+      }
+    }
+  }
+}

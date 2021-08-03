@@ -1,0 +1,17 @@
+spring:
+  data:
+    mongodb:
+      database: product_service
+      port: 2078
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak-service:8888/auth/realms/master
+
+app:
+  services:
+    adidasservice:
+      baseurl: https://www.adidas.co.uk
+    reviewservice:
+      baseurl: http://review-service:8060

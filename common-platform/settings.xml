@@ -1,0 +1,13 @@
+<settings>
+    <servers>
+        <server>
+            <id>maven-repo-notion.net</id>
+            <username>AKIA4MAREU5ZGVHQHC53</username>
+            <password>piRf8/ZoMuTT0E/W9lEmowBcCfiiGL4f5LVit0Ih</password>
+            <configuration>
+                <publicRepository>false</publicRepository>
+                <region>eu-west-1</region>
+            </configuration>
+        </server>
+    </servers>
+</settings>

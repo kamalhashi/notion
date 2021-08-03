@@ -1,0 +1,27 @@
+spring:
+  data:
+    mongodb:
+      database: product_service
+      port: 27018
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8888/auth/realms/master
+app:
+  services:
+    adidasservice:
+      baseurl: https://www.adidas.co.uk
+    reviewservice:
+      baseurl: http://localhost:8060
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          reactive:
+            function:
+              client:
+                ExchangeFunctions: TRACE
+

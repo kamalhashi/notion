@@ -1,0 +1,22 @@
+<settings>
+    <servers>
+        <server>
+            <id>maven-repo-notion.net.snapshot</id>
+            <username>AKIA4MAREU5ZON3EAIFY</username>
+            <password>3F5qjkO8ego60s8NSToevq0uUsr0pmdyH5LyXEov</password>
+            <configuration>
+                <publicRepository>false</publicRepository>
+                <region>eu-west-1</region>
+            </configuration>
+        </server>
+        <server>
+            <id>maven-repo-notion.net.release</id>
+            <username>AKIA4MAREU5ZON3EAIFY</username>
+            <password>3F5qjkO8ego60s8NSToevq0uUsr0pmdyH5LyXEov</password>
+            <configuration>
+                <publicRepository>false</publicRepository>
+                <region>eu-west-1</region>
+            </configuration>
+        </server>
+    </servers>
+</settings>
