@@ -1,2 +1,7 @@
 .DS_Store
-./product-review/target
+./product-service/target
+./product-service/.idea
+./review-service/target
+./review-service/.idea
+./gateway-service/target
+./gateway-service/.idea
