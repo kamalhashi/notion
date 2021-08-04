@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.notion.service.review.domain.service.imp.ReviewServiceImplTest
--------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.768 s - in com.notion.service.review.domain.service.imp.ReviewServiceImplTest

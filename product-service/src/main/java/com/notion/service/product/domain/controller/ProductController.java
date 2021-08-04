@@ -3,7 +3,7 @@ package com.notion.service.product.domain.controller;
 import com.notion.service.common.client.AdidasClient;
 import com.notion.service.common.client.ReviewClient;
 import com.notion.service.common.dto.client.AdidasClientResponseDto;
-import com.notion.service.common.dto.client.ReviewStatisticsClientResponseDto;
+import com.notion.service.common.dto.client.TotalReviewClientResponseDto;
 import com.notion.service.common.dto.response.Response;
 import com.notion.service.common.enums.ResponseStatus;
 import com.notion.service.product.domain.dto.ProductReviewResponseDto;
@@ -36,23 +36,23 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ROLE_WRITE')")
     @GetMapping("/current-user")
-    public Mono<Collection<? extends GrantedAuthority>> hello(Mono<Authentication> authentication) {
+    public Mono<Collection<? extends GrantedAuthority>> currentUser(Mono<Authentication> authentication) {
         return authentication
                 .map(Authentication::getAuthorities);
     }
 
 
     @GetMapping("{productId}")
-    public Mono<?> findProductAndReviewByProductId(@PathVariable("productId") String productId) {
+    public Mono<ResponseEntity<Response<ProductReviewResponseDto>>> findProductAndReviewByProductId(@PathVariable("productId") String productId) {
         return adidasClient.getProductByProductId(productId)
                 .onErrorResume( throwable ->   Mono.just(new AdidasClientResponseDto()))
                 .zipWith(reviewClient.getProductByProductId(productId)
-                        .onErrorResume( throwable ->   Mono.just(new ReviewStatisticsClientResponseDto())))
+                        .onErrorResume( throwable ->   Mono.just(new TotalReviewClientResponseDto())))
                         .map(tuples -> {
                     return ProductReviewResponseDto
                             .builder()
                             .adidasResponseDto(tuples.getT1())
-                            .reviewStatisticsResponseDto(tuples.getT2().getData())
+                            .totalReviewResponseDto(tuples.getT2().getData())
                            .build();
                 })
                 .map(review -> ResponseEntity.ok(Response.<ProductReviewResponseDto>builder()

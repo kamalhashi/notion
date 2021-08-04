@@ -59,11 +59,7 @@
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-webflux:2.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-json:2.5.2" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.3" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.3" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.3" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.12.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-reactor-netty:2.5.2" level="project" />
     <orderEntry type="library" name="Maven: io.projectreactor.netty:reactor-netty-http:1.0.8" level="project" />
@@ -85,6 +81,34 @@
     <orderEntry type="library" name="Maven: io.netty:netty-codec-socks:4.1.65.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webflux:5.3.8" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j:2.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-circuitbreaker-resilience4j:2.0.2" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-spring-boot2:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-spring:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-annotations:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-consumer:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-circularbuffer:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-framework-common:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-ratelimiter:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-retry:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-micrometer:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-circuitbreaker:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.vavr:vavr:0.10.2" level="project" />
+    <orderEntry type="library" name="Maven: io.vavr:vavr-match:0.10.2" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.31" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-core:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-timelimiter:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-reactor:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-actuator:2.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-actuator-autoconfigure:2.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-actuator:2.5.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.micrometer:micrometer-core:1.7.1" level="project" />
+    <orderEntry type="library" name="Maven: org.hdrhistogram:HdrHistogram:2.1.12" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.latencyutils:LatencyUtils:2.0.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.5.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.5.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.5.2" level="project" />
@@ -92,7 +116,6 @@
     <orderEntry type="library" name="Maven: net.minidev:json-smart:2.4.7" level="project" />
     <orderEntry type="library" name="Maven: net.minidev:accessors-smart:2.4.7" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm:9.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.31" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.19.0" level="project" />

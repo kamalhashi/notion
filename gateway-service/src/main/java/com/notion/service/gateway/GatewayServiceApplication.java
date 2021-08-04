@@ -32,4 +32,9 @@ public class GatewayServiceApplication {
 		return Mono.just(session.getId());
 	}
 
+	@GetMapping("/fallback")
+	public Mono<String> serviceFallBack(){
+		return Mono.just("Service requested is down");
+	}
+
 }

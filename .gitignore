@@ -1,7 +1,9 @@
 .DS_Store
-./product-service/target
-./product-service/.idea
-./review-service/target
-./review-service/.idea
-./gateway-service/target
-./gateway-service/.idea
+product-service/target
+product-service/.idea
+review-service/target
+review-service/.idea
+gateway-service/target
+gateway-service/.idea
+common-platform/.idea
+common-platform/target

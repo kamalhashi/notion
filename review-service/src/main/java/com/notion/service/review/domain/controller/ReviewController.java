@@ -1,7 +1,7 @@
 package com.notion.service.review.domain.controller;
 
 import com.notion.service.common.dto.response.Response;
-import com.notion.service.common.dto.response.ReviewStatisticsResponseDto;
+import com.notion.service.common.dto.response.TotalReviewResponseDto;
 import com.notion.service.common.enums.ResponseStatus;
 import com.notion.service.common.exception.GeneralException;
 import com.notion.service.review.domain.dto.ReviewRequestDto;
@@ -53,12 +53,12 @@ public class ReviewController {
     }
 
     @GetMapping("products/{productId}")
-    public Mono<ResponseEntity<Response<ReviewStatisticsResponseDto>>> findReviewByProductId(@PathVariable("productId") String productId) {
+    public Mono<ResponseEntity<Response<TotalReviewResponseDto>>> findReviewByProductId(@PathVariable("productId") String productId) {
         return reviewService.findReviewByProductId(productId)
               .switchIfEmpty(Mono.error(new GeneralException(ReviewError.PRODUCT_NOT_FOUND)))
                .collectList()
                 .map(reviews -> reviewService.calculateProductReview(reviews, productId))
-                .map(review -> ResponseEntity.ok(Response.<ReviewStatisticsResponseDto>builder()
+                .map(review -> ResponseEntity.ok(Response.<TotalReviewResponseDto>builder()
                         .data(review)
                         .status(ResponseStatus.SUCCESS)
                         .build()));

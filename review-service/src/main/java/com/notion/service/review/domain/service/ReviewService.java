@@ -1,6 +1,6 @@
 package com.notion.service.review.domain.service;
 
-import com.notion.service.common.dto.response.ReviewStatisticsResponseDto;
+import com.notion.service.common.dto.response.TotalReviewResponseDto;
 import com.notion.service.review.domain.dto.ReviewRequestDto;
 import com.notion.service.review.domain.entity.Review;
 import reactor.core.publisher.Flux;
@@ -15,5 +15,5 @@ public interface ReviewService {
 
     public Flux<Review> findReviewByProductId(String productId);
 
-    ReviewStatisticsResponseDto calculateProductReview(List<Review> reviews, String productId);
+    TotalReviewResponseDto calculateProductReview(List<Review> reviews, String productId);
 }

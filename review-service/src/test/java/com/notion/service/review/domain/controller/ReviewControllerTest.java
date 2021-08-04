@@ -2,7 +2,7 @@ package com.notion.service.review.domain.controller;
 
 
 import com.notion.service.common.dto.response.Response;
-import com.notion.service.common.dto.response.ReviewStatisticsResponseDto;
+import com.notion.service.common.dto.response.TotalReviewResponseDto;
 import com.notion.service.review.domain.config.Config;
 import com.notion.service.review.domain.dto.ReviewRequestDto;
 import com.notion.service.review.domain.entity.Review;
@@ -79,7 +79,7 @@ public class ReviewControllerTest {
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(Response.class)
-                .value(response -> ((List<ReviewStatisticsResponseDto>) response.getData()).size(), equalTo(2));
+                .value(response -> ((List<TotalReviewResponseDto>) response.getData()).size(), equalTo(2));
 
         Mockito.verify(reviewService, times(1)).findAll();
 

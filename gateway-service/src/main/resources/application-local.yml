@@ -12,7 +12,7 @@ spring:
           notion-client:
             provider: keycloak
             client-id: notion-client
-            client-secret: d88acb83-4625-4ba1-8d9c-f05c66310d3d
+            client-secret: 9d334afd-dfa9-4a73-bb3e-4d2f20fae349
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
 
@@ -27,7 +27,24 @@ spring:
             - Path=/v1/products/**
           filters:
             - RemoveRequestHeader=Cookie
+            - name: CircuitBreaker
+              args:
+                name: fetchProducts
+                fallbackUri: forward:/fallback
+          metadata:
+            response-timeout: 5000
+            connect-timeout: 5000
+
         - id: review-service
           uri: http://127.0.0.1:8042
           predicates:
             - Path=/v1/reviews/**
+          metadata:
+            response-timeout: 5000
+            connect-timeout: 5000
+          filters:
+            - RemoveRequestHeader=Cookie
+            - name: CircuitBreaker
+              args:
+                name: fetchProducts
+                fallbackUri: forward:/fallback

@@ -1,6 +1,6 @@
 package com.notion.service.review.domain.service.imp;
 
-import com.notion.service.common.dto.response.ReviewStatisticsResponseDto;
+import com.notion.service.common.dto.response.TotalReviewResponseDto;
 import com.notion.service.review.domain.dto.ReviewRequestDto;
 import com.notion.service.review.domain.entity.Review;
 import com.notion.service.review.domain.mapper.ReviewMapper;
@@ -44,9 +44,9 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public ReviewStatisticsResponseDto calculateProductReview(List<Review> reviews, String productId) {
+    public TotalReviewResponseDto calculateProductReview(List<Review> reviews, String productId) {
         BigDecimal totalScore = reviews.stream().map(Review::getScore).reduce(BigDecimal.ZERO, BigDecimal::add);
-        return ReviewStatisticsResponseDto.builder().numberReviews(reviews.size())
+        return TotalReviewResponseDto.builder().numberReviews(reviews.size())
                 .averageReviews(totalScore.divide(BigDecimal.valueOf(reviews.size()), 2, RoundingMode.HALF_EVEN))
                 .productId(productId)
                 .build();

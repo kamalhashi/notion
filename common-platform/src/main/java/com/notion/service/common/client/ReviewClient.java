@@ -1,6 +1,6 @@
 package com.notion.service.common.client;
 
-import com.notion.service.common.dto.client.ReviewStatisticsClientResponseDto;
+import com.notion.service.common.dto.client.TotalReviewClientResponseDto;
 import com.notion.service.common.enums.ErrorCode;
 import com.notion.service.common.exception.GeneralException;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,7 @@ public class ReviewClient {
         this.baseUrl = baseUrl;
     }
 
-    public Mono<ReviewStatisticsClientResponseDto> getProductByProductId(String productId) {
+    public Mono<TotalReviewClientResponseDto> getProductByProductId(String productId) {
         return this.client.get()
                 .uri(uriBuilder -> uriBuilder.path("/v1/reviews/products/")
                         .path(productId).build())
@@ -32,7 +32,7 @@ public class ReviewClient {
                     log.error("error in fetching one of the productId: {} from adidas server httpsCode:{}", productId, clientResponse.rawStatusCode());
                     return Mono.error(new GeneralException(ErrorCode.NOT_FOUND));
                 })
-                .bodyToMono(ReviewStatisticsClientResponseDto.class);
+                .bodyToMono(TotalReviewClientResponseDto.class);
     }
 
 
